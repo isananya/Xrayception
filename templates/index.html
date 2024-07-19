@@ -1,3 +1,485 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6cf66d4ffe53fb2b3779d0a575eff94cefeae951646c419bc194acac0a1937a4
-size 19111
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>ShitName</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename = 'bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'aos.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'swiper-bundle.min.css')}}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{{ url_for('static', filename='main.css')}}" rel="stylesheet">
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header fixed-top">
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Shit Name</h1>
+          <span>.</span>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="#hero" class="active">Home<br></a></li>
+            <li><a href="#test">Test</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#precautions">Precautions</a></li>
+            <li><a href="#vaccination">Vaccination</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section accent-background">
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-5 justify-content-between">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h2><span>Welcome to </span><span class="accent" style="color: #192e7c;">ShitName</span></h2>
+            <p>leakage se bachaye, achi neend dilaaye, mamy poko pants .</p>
+            <div class="d-flex">
+              <a href="#test" class="btn-get-started">Test Now</a>
+            </div>
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2">
+            <img src="{{ url_for('static', filename = 'home.png')}}" class="img-fluid" alt="" style="height: 90%;">
+          </div>
+
+        </div>
+      </div>
+
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+
+
+    <!-- Test Section -->
+    <section id="test" class="test section">
+      <div class="container section-title" data-aos="fade-up">
+      </div>
+      <!-- <div class="container"> -->
+      <!-- <div class="scan">
+            <div class="filescan" ></div>
+          </div> <br> -->
+      <div class="heroupload">
+
+      </div>
+      <center>
+      <div class="container" id="scan">
+        <div id="preview"></div>
+        <label for="inputfile" id="drop-area" class="upload">
+          <input type="file" accept="image/*" id="inputfile" hidden>
+          <div id="img-view">
+            <img src="{{ url_for('static', filename = 'upload.png')}}">
+            <p>Drag and drop or click here<br>to upload image</p>
+            <span>Upload any image from desktop</span>
+          </div>
+
+        </label>
+
+      </div>
+      <p>
+        <div id="status"></div>
+      </p>
+      <p>
+        <div id = "prediction"></div>
+      </p>
+      </center>
+      <img src="{{ url_for('static', filename = 'cancel.png')}}" id="cancel" hidden>
+
+
+
+        <script>
+          var dropArea=document.getElementById("drop-area");
+          var inputFile=document.getElementById("inputfile");
+          var imageView=document.getElementById("img-view");
+          var preView=document.getElementById("preview");
+          var scanDiv=document.getElementById("scan");
+
+          function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
+
+          
+
+          inputFile.addEventListener("change",function(e){
+            e.preventDefault();
+            uploadImage();
+          });
+          
+          function uploadImage(){
+            var imgLink = URL.createObjectURL(inputFile.files[0]);
+            console.log(inputFile.files);
+
+
+            preView.style.width='500px';
+            preView.style.height='300px';
+            var para1 = document.createElement("img");
+            para1.id="cancel";
+            para1.src="{{ url_for('static', filename = 'cancel.png')}}";
+            preView.appendChild(para1);
+            preView.style.backgroundImage=`url(${imgLink})`;
+            inputFile.remove();
+            imageView.remove();
+            dropArea.remove();
+            scanDiv.innerHTML+="<br>";
+            var para = document.createElement("BUTTON");
+            para.id="scan-button";
+            var node = document.createTextNode("Scan");
+            para.appendChild(node);
+            scanDiv.appendChild(para);
+            var Cancel= document.getElementById("cancel");
+            Cancel.addEventListener("click",function(e){
+              e.preventDefault();
+              var scanButton=document.getElementById("scan-button");
+              scanButton.remove();
+              uploadPage();
+            }); 
+            var scanButton=document.getElementById("scan-button");
+            scanButton.addEventListener("click",function(e){
+
+              // var fileInput = document.getElementById("inputfile");
+              if (inputFile.files.length === 0){
+                alert("Please select a file first.");
+                return;
+              }
+
+              var file = inputFile.files[0];
+              scanButton.innerHTML = "<i class='fa fa-circle-o-notch fa-spin'></i>&nbsp&nbspScanning..";
+              async function run() {
+                console.log("This is the first message.");
+            
+                await delay(5000); 
+                window.scrollTo({ top: 900, behavior: 'smooth' });
+                
+
+                var formData = new FormData();
+                formData.append("file", file);
+
+                var r = new XMLHttpRequest();
+                r.open("POST", "http://127.0.0.1:5000/predict", true);
+
+                r.onreadystatechange = function () {
+                  if (r.readyState != 4) return;
+                  if (r.status == 200){
+                    var response = JSON.parse(r.responseText);
+                    var pred = document.getElementById("prediction");
+                    pred.innerHTML = response.predictions;
+                    pred.style.padding = '40px 50px 40px 50px';
+                    pred.style.border ='2px solid #667ab1';
+                    document.getElementById("status").innerHTML = response.status;
+                    scanButton.innerHTML = "Scan";
+                  } else {
+                    console.error("Error : " + r.status)
+                  }
+                };
+                r.send(formData);
+                console.log("2nd");
+              }
+              run();
+              
+            });
+          }
+
+          function uploadPage(){
+            scanDiv.innerHTML="<div id='preview'/>";
+              scanDiv.innerHTML+="<label for='inputfile' id='drop-area' class='upload'><input type='file' accept='image/*' id='inputfile' hidden><div id='img-view'><img src='../static/upload.png'><p>Drag and drop or click here<br>to upload image</p><span>Upload any image from desktop</span></div></label>"
+              dropArea=document.getElementById("drop-area");
+              inputFile=document.getElementById("inputfile");
+              imageView=document.getElementById("img-view");
+              preView=document.getElementById("preview");
+              console.log(inputFile.files);
+              inputFile.addEventListener("change",function(e){
+                e.preventDefault();
+                uploadImage();
+              });
+              dropArea.addEventListener("dragover",function(e){
+                e.preventDefault();
+              });
+    
+              dropArea.addEventListener("drop",function(e){
+                e.preventDefault();
+                inputFile.files=e.dataTransfer.files;
+                uploadImage();
+              });
+          }
+
+          dropArea.addEventListener("dragover",function(e){
+            e.preventDefault();
+          });
+
+          dropArea.addEventListener("drop",function(e){
+            e.preventDefault();
+            inputFile.files=e.dataTransfer.files;
+            uploadImage();
+          });
+          
+
+          
+        </script>
+    </section><!-- /Test Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About Us<br></h2>
+        
+
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3>Harness the power of advanced technology to provide accurate and efficient COVID-19 detection using lung X-ray images</h3>
+            <img src="../assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
+            <p>We aim to support healthcare professionals in diagnosing and managing COVID-19, especially in areas with limited access 
+              to rapid testing facilities.</p>
+            <p>Our solution is built on the robust TensorFlow framework and leverages the Xception architecture, pre-trained on ImageNet,
+               and fine-tuned for COVID-19 detection. We incorporate advanced data augmentation techniques to enhance model generalization
+                and ensure high accuracy across diverse X-ray images.
+            </p>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                We prioritize the privacy and security of our users' data. All uploaded images are encrypted and processed securely, ensuring
+                 that patient confidentiality is maintained at all times.
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Accuracy: Our deep learning model is rigorously tested and validated, offering high diagnostic accuracy.
+                </span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Efficiency: Get quick results, enabling timely decision-making for healthcare professionals.
+                </span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Accessibility: Our platform is designed to be user-friendly, making advanced diagnostic tools accessible to all.
+                </span></li>
+              </ul>
+              <p>
+                We envision a world where advanced technology bridges the gap in healthcare accessibility, providing crucial diagnostic tools
+                 to combat pandemics like COVID-19. By continuously improving our models and expanding our services, we strive to contribute 
+                 to global health and well-being.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    
+    <section id="precautions" class="precautions section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 align-items-center">
+
+          <div class="col-lg-5">
+            <img src="../assets/img/stats-img.svg" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-lg-7">
+
+            <div class="row gy-4">
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-emoji-smile flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+                      class="purecounter"></span>
+                    <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-journal-richtext flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                      class="purecounter"></span>
+                    <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-headset flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
+                      class="purecounter"></span>
+                    <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <div class="col-lg-6">
+                <div class="stats-item d-flex">
+                  <i class="bi bi-people flex-shrink-0"></i>
+                  <div>
+                    <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
+                      class="purecounter"></span>
+                    <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+                  </div>
+                </div>
+              </div><!-- End Stats Item -->
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Precaution Section -->
+
+    <!-- Vaccination Section -->
+    <section id="vaccination" class="vaccination section dark-background">
+
+      <div class="container">
+        <img src="../assets/img/cta-bg.jpg" alt="">
+        <div class="content row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+              <h3>Call To Action</h3>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.</p>
+              <a class="cta-btn" href="#">Call To Action</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Vaccination Section -->
+
+    
+
+  </main>
+
+  <footer id="footer" class="footer accent-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Impact</span>
+          </a>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta
+            donna mare fermentum iaculis eu non diam phasellus.</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>A108 Adam Street</p>
+          <p>New York, NY 535022</p>
+          <p>United States</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+          <p><strong>Email:</strong> <span>info@example.com</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Impact</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/vendor/php-email-form/validate.js"></script>
+  <script src="../static/vendor/aos/aos.js"></script>
+  <script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>
