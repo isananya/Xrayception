@@ -1,7 +1,7 @@
 # Xrayception
  COVID Detection using Xception on Lung X-rays
 
-# Running
+### Running
  To run the Flask App, run 
 ```
 git install lfs
