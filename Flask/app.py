@@ -1,7 +1,8 @@
 from flask import Flask, render_template, redirect, send_from_directory, request, jsonify
 from werkzeug.utils import secure_filename
-from model import preprocess, predict_result
 import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+from model import preprocess, predict_result
 import json
 
 
@@ -11,8 +12,6 @@ app = Flask(__name__)
 
 cwd = os.path.realpath(__file__).rstrip("app.py")
 UPLOAD_FOLDER = 'uploads'
-# if not os.path.exists(UPLOAD_FOLDER):
-#     os.makedirs(UPLOAD_FOLDER)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -31,21 +30,21 @@ def predict():
         return jsonify({"error": "No selected file"}), 400
     if file:
         filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        # file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file_path = cwd + "uploads\\" + filename
+        print(file_path)
         file.save(file_path)
 
         # Perform your prediction or processing here using file_path
         print(filename)
 
-        # prediction = predict_result(f"{cwd}{file_path}")
-        full_path = cwd + file_path
-        print("Full Path :", full_path)
 
-        img = preprocess(full_path)
+        img = preprocess(file_path)
         prediction = predict_result(img)
 
         print(prediction)
 
+        os.remove(file_path)
 
         summary = ""
         if prediction[0] == 0 :
