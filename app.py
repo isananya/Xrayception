@@ -53,12 +53,12 @@ def predict():
                 This means you <b>DO NOT</b> have COVID-19!"
         else:
             summary = f"The probability of the patient in this scan having COVID-19 is <big><b>{round(prediction[1] * 100, 2)}% </b></big>. <br>\
-                    This means you <b>probably have</b> COVID-19, Find possible treatments <a target=”_blank” href='https://www.cdc.gov/covid/treatment/?CDC_AAref_Val=https://www.cdc.gov/coronavirus/2019-ncov/your-health/treatments-for-severe-illness.html'>here</a>"
+                    This means you <b>probably have</b> COVID-19, Find possible treatments <a target=”_blank” href='https://www.mygov.in/covid-19/'>here</a> and <a href = 'https://indiacovidguidelines.org/' target='_blank'> here </a>"
 
         
         result = {
             "status": f"File {filename} received and processed",
-            "diagnosis" : f"The Analysis revealed a class {prediction[0]} diagnosis at {round(prediction[1], 5)}\
+            "diagnosis" : f"The Analysis revealed a class {prediction[0]} diagnosis at {round(prediction[1] * 100, 5)}%\
                 <br> (Class 1 implies a COVID 19 Diagnosis and Class 0 implies a Healthy Diagnosis)",
             "predictions" : summary
         }
