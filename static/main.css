@@ -1279,8 +1279,20 @@ section,
   font-size: 14px;
 }
 
+.purecounter{
+  font-size: 40px;
+  display: block;
+  font-weight: bold;
+}
+
+.stats-item i{
+  font-size: 45px;
+  color: var(--accent-color);
+  margin-right: 10px;
+}
+
 /*--------------------------------------------------------------
-# Call To Action Section
+# vaccination Section
 --------------------------------------------------------------*/
 .call-to-action {
   background-color: transparent;

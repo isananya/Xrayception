@@ -16,6 +16,7 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{{ url_for('static', filename = 'bootstrap-icons.css')}}" rel="stylesheet">
@@ -49,6 +50,7 @@
             <li><a href="#test">Test</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#precautions">Precautions</a></li>
+            <li><a href="#stats">Stats</a></li>
             <li><a href="#vaccination">Vaccination</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -326,14 +328,14 @@
     </section><!-- /About Section -->
 
     
-    <section id="precautions" class="precautions section">
+    <section id="stats" class="stats section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4 align-items-center">
 
           <div class="col-lg-5">
-            <img src="../assets/img/stats-img.svg" alt="" class="img-fluid">
+            <img src="{{ url_for('static', filename = 'stats-img.svg')}}" alt="" class="img-fluid">
           </div>
 
           <div class="col-lg-7">
@@ -342,7 +344,7 @@
 
               <div class="col-lg-6">
                 <div class="stats-item d-flex">
-                  <!-- <i class="bi bi-emoji-smile flex-shrink-0"></i> -->
+                  <i class="bi bi-emoji-smile flex-shrink-0"></i> 
                   <div>
                     <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="2"
                       class="purecounter"></span>
@@ -353,7 +355,7 @@
 
               <div class="col-lg-6">
                 <div class="stats-item d-flex">
-                  <!-- <i class="bi bi-journal-richtext flex-shrink-0"></i> -->
+                  <i class="bi bi-journal-richtext flex-shrink-0"></i>
                   <div>
                     <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="2"
                       class="purecounter"></span>
@@ -364,7 +366,7 @@
 
               <div class="col-lg-6">
                 <div class="stats-item d-flex">
-                  <!-- <i class="bi bi-headset flex-shrink-0"></i> -->
+                  <i class="bi bi-headset flex-shrink-0"></i>
                   <div>
                     <span data-purecounter-start="0" data-purecounter-end="6600" data-purecounter-duration="3"
                       class="purecounter"></span>
@@ -375,7 +377,7 @@
 
               <div class="col-lg-6">
                 <div class="stats-item d-flex">
-                  <!-- <i class="bi bi-people flex-shrink-0"></i> -->
+                  <i class="bi bi-people flex-shrink-0"></i>
                   <div>
                     <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
                       class="purecounter"></span>
