@@ -75,6 +75,11 @@ body {
   font-family: var(--default-font);
 }
 
+/* svg{
+  fill: currentColor;
+  color: white;
+} */
+
 a {
   color: var(--accent-color);
   text-decoration: none;
@@ -2447,13 +2452,6 @@ section,
   font-style: italic;
   margin: 0 0 15px 0 0 0;
   padding: 0;
-}
-
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
 }
 
 /*--------------------------------------------------------------

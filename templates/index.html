@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>RespireAI</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -28,7 +27,9 @@
   <!-- Main CSS File -->
   <link href="{{ url_for('static', filename='main.css')}}" rel="stylesheet">
 
-  <!-- <link rel="icon" href="icon_path" type="image/icon type"> -->
+  <title>RespireAI</title>
+
+  <link rel="icon" href="{{url_for('static', filename='favicon.svg')}}" type="image/svg+xml">
 
 </head>
 
@@ -430,7 +431,7 @@
               <a href="https://youtu.be/kjO3Sy0WRe8?feature=shared" class="glightbox play-btn"></a>
               <h3>Vaccination</h3>
               <p>For detailed information on vaccination, including availability and locations, please click here.</p>
-              <a class="cta-btn" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines">Learn More</a>
+              <a class="cta-btn" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines" target="_blank">Learn More</a>
             </div>
           </div>
         </div>
