@@ -327,6 +327,29 @@
 
     </section><!-- /About Section -->
 
+    <section id="precautions" class="precautions section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Precautions<br></h2>
+      </div>
+      <div class="container">
+        <ul>
+          <li><i class="bi bi-square-fill"></i> <span>Proper X-ray Technique: Ensure that the X-ray images are captured with
+             proper positioning and exposure settings. Inaccurate images can lead to incorrect results.</span></li>
+          <li><i class="bi bi-square-fill"></i> <span>Hygiene and Safety: Follow all recommended hygiene practices when handling
+             patients and X-ray equipment to prevent the spread of COVID-19. Wear appropriate personal protective equipment (PPE)
+              and sanitize equipment after each use.</span></li>
+          <li><i class="bi bi-square-fill"></i> <span>Consult Healthcare Professionals: This platform is intended to assist 
+            healthcare professionals and should not replace professional medical advice or diagnosis. Always consult a healthcare
+             professional for a comprehensive evaluation and diagnosis.
+          </span></li>
+          <li><i class="bi bi-square-fill"></i> <span></span>Regular Calibration: Regularly calibrate X-ray machines to ensure the
+             accuracy and quality of the images. Poorly calibrated machines can produce substandard images, affecting the diagnostic
+              process.</span></li>
+          </ul>
+      </div>
+    </section>
+
+
     
     <section id="stats" class="stats section">
 
@@ -400,16 +423,14 @@
     <section id="vaccination" class="vaccination section dark-background">
 
       <div class="container">
-        <img src="../assets/img/cta-bg.jpg" alt="">
+        <img src="{{ url_for('static', filename = 'covid.jpg')}}" alt="">
         <div class="content row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-xl-10">
             <div class="text-center">
-              <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
-              <h3>Call To Action</h3>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.</p>
-              <a class="cta-btn" href="#">Call To Action</a>
+              <a href="https://youtu.be/kjO3Sy0WRe8?feature=shared" class="glightbox play-btn"></a>
+              <h3>Vaccination</h3>
+              <p>For detailed information on vaccination, including availability and locations, please click here.</p>
+              <a class="cta-btn" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines">Learn More</a>
             </div>
           </div>
         </div>
@@ -429,59 +450,16 @@
           <a href="index.html" class="logo d-flex align-items-center">
             <span class="sitename">RespireAI</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta
-            donna mare fermentum iaculis eu non diam phasellus.</p>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
+          <p>Harness the power of advanced technology to provide accurate and efficient COVID-19 
+            detection using lung X-ray images.</p>
+          
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
-        </div>
-
-      </div>
+        
     </div>
 
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">RespireAI</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
     </div>
 
   </footer>
