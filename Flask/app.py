@@ -11,9 +11,6 @@ app = Flask(__name__)
 
 
 cwd = os.path.realpath(__file__).rstrip("app.py")
-UPLOAD_FOLDER = 'uploads'
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 def home():
@@ -31,7 +28,7 @@ def predict():
     if file:
         filename = secure_filename(file.filename)
         # file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file_path = cwd + "uploads\\" + filename
+        file_path = cwd + "static\\" + filename
         print(file_path)
         file.save(file_path)
 

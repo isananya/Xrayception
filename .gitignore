@@ -2,4 +2,3 @@ __pycache__/
 *.h5
 *.pyc
 __pycache__/model.cpython-312.pyc
-uploads/
