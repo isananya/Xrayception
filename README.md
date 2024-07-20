@@ -1,5 +1,5 @@
 # Xrayception
- COVID Detection using Xception on Lung X-rays
+ COVID Detection using Xception on Lung X-rays.
 
 ### Running
  To run the Flask App, after cloning the repository: 
