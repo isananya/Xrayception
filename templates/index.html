@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>ShitName</title>
+  <title>RespireAI</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,6 +27,8 @@
   <!-- Main CSS File -->
   <link href="{{ url_for('static', filename='main.css')}}" rel="stylesheet">
 
+  <!-- <link rel="icon" href="icon_path" type="image/icon type"> -->
+
 </head>
 
 <body class="index-page">
@@ -37,7 +39,7 @@
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Shit Name</h1>
+          <h1 class="sitename">RespireAI</h1>
           <span>.</span>
         </a>
 
@@ -66,8 +68,8 @@
       <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-5 justify-content-between">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h2><span>Welcome to </span><span class="accent" style="color: #192e7c;">ShitName</span></h2>
-            <p>leakage se bachaye, achi neend dilaaye, mamy poko pants .</p>
+            <h2><span>Welcome to </span><span class="accent" style="color: #7788c4;">RespireAI</span></h2>
+            <p>Detect COVID-19 with our powerful AI vision.</p>
             <div class="d-flex">
               <a href="#test" class="btn-get-started">Test Now</a>
             </div>
@@ -95,7 +97,13 @@
             <div class="filescan" ></div>
           </div> <br> -->
       <div class="heroupload">
-
+        
+          <center>
+              <h3>
+                  All we need is an X-Ray scan of your lungs. <br><br>
+              </h3>
+          </center>
+      
       </div>
       <center>
       <div class="container" id="scan">
@@ -116,6 +124,9 @@
       </p>
       <p>
         <div id = "prediction"></div>
+      </p>
+      <p>
+        <div id = "diagnosis"></div>
       </p>
       </center>
       <img src="{{ url_for('static', filename = 'cancel.png')}}" id="cancel" hidden>
@@ -155,6 +166,7 @@
             inputFile.remove();
             imageView.remove();
             dropArea.remove();
+            
             scanDiv.innerHTML+="<br>";
             var para = document.createElement("BUTTON");
             para.id="scan-button";
@@ -162,15 +174,22 @@
             para.appendChild(node);
             scanDiv.appendChild(para);
             var Cancel= document.getElementById("cancel");
+
             Cancel.addEventListener("click",function(e){
               e.preventDefault();
               var scanButton=document.getElementById("scan-button");
+              var pred = document.getElementById("prediction");
+              var diag = document.getElementById("diagnosis");
+              pred.innerHTML = ""
+              pred.style.display = "none";
+              diag.innerHTML = ""
+              document.getElementById("status").innerHTML = ""
               scanButton.remove();
               uploadPage();
             }); 
+
             var scanButton=document.getElementById("scan-button");
             scanButton.addEventListener("click",function(e){
-
               // var fileInput = document.getElementById("inputfile");
               if (inputFile.files.length === 0){
                 alert("Please select a file first.");
@@ -197,9 +216,12 @@
                   if (r.status == 200){
                     var response = JSON.parse(r.responseText);
                     var pred = document.getElementById("prediction");
+                    var diag = document.getElementById("diagnosis");
+                    diag.innerHTML = response.diagnosis
                     pred.innerHTML = response.predictions;
                     pred.style.padding = '40px 50px 40px 50px';
                     pred.style.border ='2px solid #667ab1';
+                    pred.style.display = "";
                     document.getElementById("status").innerHTML = response.status;
                     scanButton.innerHTML = "Scan";
                   } else {
@@ -320,44 +342,44 @@
 
               <div class="col-lg-6">
                 <div class="stats-item d-flex">
-                  <i class="bi bi-emoji-smile flex-shrink-0"></i>
+                  <!-- <i class="bi bi-emoji-smile flex-shrink-0"></i> -->
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="2"
                       class="purecounter"></span>
-                    <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+                    <p><strong>Happy Clients</strong> <span>with Accurate Diagnoses</span></p>
                   </div>
                 </div>
               </div><!-- End Stats Item -->
 
               <div class="col-lg-6">
                 <div class="stats-item d-flex">
-                  <i class="bi bi-journal-richtext flex-shrink-0"></i>
+                  <!-- <i class="bi bi-journal-richtext flex-shrink-0"></i> -->
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="2"
                       class="purecounter"></span>
-                    <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+                    <p><strong>Projects</strong> <span>Hours Spent in Production</span></p>
                   </div>
                 </div>
               </div><!-- End Stats Item -->
 
               <div class="col-lg-6">
                 <div class="stats-item d-flex">
-                  <i class="bi bi-headset flex-shrink-0"></i>
+                  <!-- <i class="bi bi-headset flex-shrink-0"></i> -->
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="6600" data-purecounter-duration="3"
                       class="purecounter"></span>
-                    <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
+                    <p><strong>Images</strong> <span>used to train the model</span></p>
                   </div>
                 </div>
               </div><!-- End Stats Item -->
 
               <div class="col-lg-6">
                 <div class="stats-item d-flex">
-                  <i class="bi bi-people flex-shrink-0"></i>
+                  <!-- <i class="bi bi-people flex-shrink-0"></i> -->
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
                       class="purecounter"></span>
-                    <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+                    <p><strong>Hard Working</strong> <span>collaborators</span></p>
                   </div>
                 </div>
               </div><!-- End Stats Item -->
@@ -403,7 +425,7 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Impact</span>
+            <span class="sitename">RespireAI</span>
           </a>
           <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta
             donna mare fermentum iaculis eu non diam phasellus.</p>
@@ -450,7 +472,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Impact</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">RespireAI</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
