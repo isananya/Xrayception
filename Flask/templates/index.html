@@ -134,149 +134,9 @@
       </center>
       <img src="{{ url_for('static', filename = 'cancel.png')}}" id="cancel" hidden>
 
-
-
-        <script>
-          var dropArea=document.getElementById("drop-area");
-          var inputFile=document.getElementById("inputfile");
-          var imageView=document.getElementById("img-view");
-          var preView=document.getElementById("preview");
-          var scanDiv=document.getElementById("scan");
-
-          function delay(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-          }
-
-          
-
-          inputFile.addEventListener("change",function(e){
-            e.preventDefault();
-            uploadImage();
-          });
-          
-          function uploadImage(){
-            var imgLink = URL.createObjectURL(inputFile.files[0]);
-            console.log(inputFile.files);
-
-
-            preView.style.width='500px';
-            preView.style.height='300px';
-            var para1 = document.createElement("img");
-            para1.id="cancel";
-            para1.src="{{ url_for('static', filename = 'cancel.png')}}";
-            preView.appendChild(para1);
-            preView.style.backgroundImage=`url(${imgLink})`;
-            inputFile.remove();
-            imageView.remove();
-            dropArea.remove();
-            
-            scanDiv.innerHTML+="<br>";
-            var para = document.createElement("BUTTON");
-            para.id="scan-button";
-            var node = document.createTextNode("Scan");
-            para.appendChild(node);
-            scanDiv.appendChild(para);
-            var Cancel= document.getElementById("cancel");
-
-            Cancel.addEventListener("click",function(e){
-              e.preventDefault();
-              var scanButton=document.getElementById("scan-button");
-              var pred = document.getElementById("prediction");
-              var diag = document.getElementById("diagnosis");
-              pred.innerHTML = ""
-              pred.style.display = "none";
-              diag.innerHTML = ""
-              document.getElementById("status").innerHTML = ""
-              scanButton.remove();
-              uploadPage();
-            }); 
-
-            var scanButton=document.getElementById("scan-button");
-            scanButton.addEventListener("click",function(e){
-              // var fileInput = document.getElementById("inputfile");
-              if (inputFile.files.length === 0){
-                alert("Please select a file first.");
-                return;
-              }
-
-              var file = inputFile.files[0];
-              scanButton.innerHTML = "<i class='fa fa-circle-o-notch fa-spin'></i>&nbsp&nbspScanning..";
-              async function run() {
-                console.log("This is the first message.");
-            
-                await delay(5000); 
-                window.scroll({ top: 1100, behavior: 'smooth' });
-                
-
-                var formData = new FormData();
-                formData.append("file", file);
-
-                var r = new XMLHttpRequest();
-                r.open("POST", "http://127.0.0.1:5000/predict", true);
-
-                r.onreadystatechange = function () {
-                  if (r.readyState != 4) return;
-                  if (r.status == 200){
-                    var response = JSON.parse(r.responseText);
-                    var pred = document.getElementById("prediction");
-                    var diag = document.getElementById("diagnosis");
-                    diag.innerHTML = response.diagnosis
-                    pred.innerHTML = response.predictions;
-                    pred.style.padding = '40px 50px 40px 50px';
-                    pred.style.border ='2px solid #667ab1';
-                    pred.style.display = "";
-                    document.getElementById("status").innerHTML = response.status;
-                    scanButton.innerHTML = "Scan";
-                  } else {
-                    console.error("Error : " + r.status)
-                  }
-                };
-                r.send(formData);
-                console.log("2nd");
-              }
-              run();
-              
-            });
-          }
-
-          function uploadPage(){
-            scanDiv.innerHTML="<div id='preview'/>";
-              scanDiv.innerHTML+="<label for='inputfile' id='drop-area' class='upload'><input type='file' accept='image/*' id='inputfile' hidden><div id='img-view'><img src='../static/upload.png'><p>Drag and drop or click here<br>to upload image</p><span>Upload any image from desktop</span></div></label>"
-              dropArea=document.getElementById("drop-area");
-              inputFile=document.getElementById("inputfile");
-              imageView=document.getElementById("img-view");
-              preView=document.getElementById("preview");
-              console.log(inputFile.files);
-              inputFile.addEventListener("change",function(e){
-                e.preventDefault();
-                uploadImage();
-              });
-              dropArea.addEventListener("dragover",function(e){
-                e.preventDefault();
-              });
-    
-              dropArea.addEventListener("drop",function(e){
-                e.preventDefault();
-                inputFile.files=e.dataTransfer.files;
-                uploadImage();
-              });
-          }
-
-          dropArea.addEventListener("dragover",function(e){
-            e.preventDefault();
-          });
-
-          dropArea.addEventListener("drop",function(e){
-            e.preventDefault();
-            inputFile.files=e.dataTransfer.files;
-            uploadImage();
-          });
-          
-
-          
-        </script>
     </section><!-- /Test Section -->
 
+    
     <!-- About Section -->
     <section id="about" class="about section">
 
@@ -292,7 +152,6 @@
         <div class="row gy-4">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             <h3>Harness the power of advanced technology to provide accurate and efficient COVID-19 detection using lung X-ray images</h3>
-            <img src="../assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
             <p>We aim to support healthcare professionals in diagnosing and managing COVID-19, especially in areas with limited access 
               to rapid testing facilities.</p>
             <p>Our solution is built on the robust TensorFlow framework and leverages the Xception architecture, pre-trained on ImageNet,
@@ -409,20 +268,14 @@
                   </div>
                 </div>
               </div><!-- End Stats Item -->
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section><!-- /Precaution Section -->
 
     <!-- Vaccination Section -->
     <section id="vaccination" class="vaccination section dark-background">
-
       <div class="container">
         <img src="{{ url_for('static', filename = 'covid.jpg')}}" alt="">
         <div class="content row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
@@ -436,11 +289,7 @@
           </div>
         </div>
       </div>
-
     </section><!-- /Vaccination Section -->
-
-    
-
   </main>
 
   <footer id="footer" class="footer accent-background">
@@ -453,10 +302,7 @@
           </a>
           <p>Harness the power of advanced technology to provide accurate and efficient COVID-19 
             detection using lung X-ray images.</p>
-          
         </div>
-
-        
     </div>
 
     <div class="container copyright text-center mt-4">
