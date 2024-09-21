@@ -8,7 +8,7 @@ git install lfs
 git lfs pull
 ```
  to download the `xception_model.h5` file.\
- Run Flask/app.py to view the app locally at http://127.0.0.1:5000/
+ Run `Flask/app.py` to view the app locally at http://127.0.0.1:5000/
 
 ## Flask App (Webpage) 
 Home Page
